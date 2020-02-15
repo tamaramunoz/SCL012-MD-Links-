@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-const fetchUrl = fetch.fetchUrl;
+const fetch = require('fetch');
+const fetchLink = fetch.fetchUrl;
 
 // // funcion MD-Links
 // const mdLinks = (path, options) => {
 //     return new Promise((resolve, reject) => {
-
 
 // reading files
 const readMdFile = (file) => {
@@ -16,9 +16,13 @@ const readMdFile = (file) => {
             } else {
                 // reg expression "match" look for coincidence
                 let links = data.match(/\(http([^)]+)\)/gi); 
-                console.log(links);
-                resolve(console.log('These all are links' + "\n"));
-            }
+                    if (links === null) {
+                        resolve(console.log('Have not found links at ' + (file)));
+                    } else {
+                        resolve(console.log('\n' + 'These all are links'));
+                        resolve(console.log(links))
+                    }
+            } 
         });
     });
 };
@@ -66,11 +70,11 @@ lookMdFile(__filename);
 function validateUrl(link) {
     return new Promise((resolve, reject) => {
       let status;
-      fetchUrl(link, function(error, meta, body) {
+      fetchLink(link, function(error, meta, body) {
         status = meta.status;
         resolve(status);
       });
     });
   }
-  
+validateUrl();
 

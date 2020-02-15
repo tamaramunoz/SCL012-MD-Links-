@@ -1,6 +1,5 @@
-// const fetchUrl = fetch.fetchUrl;
-// const fetchUrl = require('./README.md').fetchUrl;
 const fs = require('fs');
+const chalk = require('chalk');
 
 // reading files
 const readMdFile = (file) => {
@@ -11,10 +10,19 @@ const readMdFile = (file) => {
             } else {
                 // reg expression "match" look for coincidence
                 let links = data.match(/\(http([^)]+)\)/gi); 
-                console.log(links);
-                resolve(console.log('These all are links' + "\n"));
-            }
+                    if (links === null) {
+                        resolve(console.log(chalk.bold.red('\n' + 'Have not found links at ' + (file) + '\n')));
+                    } else {
+                        resolve(console.log(chalk.bold.yellow('\n' + 'These all are links')));
+                        resolve(console.log(links))
+                    }
+            } 
         });
     });
 };
-readMdFile('README.md');
+readMdFile('texto.md');
+
+// } if (links.length === 0) {
+//     console.log(chalk.bold.red("We haven´t found any links at: ") + chalk.red.underline(file));
+//   } else
+//     resolve(links);
