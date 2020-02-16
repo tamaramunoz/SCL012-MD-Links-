@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "dependencies": {
     "chalk": "^3.0.0",
-    "fetch": "^1.1.0"
+    "fetch": "^1.1.0",
+    "isurl": "^4.0.1",
+    "markdown-it": "^10.0.0"
   }
 }
