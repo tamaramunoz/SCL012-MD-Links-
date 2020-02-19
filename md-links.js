@@ -9,7 +9,7 @@ const markDown = require('markdown-it')(); // transform the file in html
 const chalk = require('chalk');// color text
 
 
-const isFileOrDirectory = path => {
+const fileOrDirectory = path => {
       fs.lstat(path, (err, stats) => {
         if (err) {
           console.log(err)
@@ -23,10 +23,9 @@ const isFileOrDirectory = path => {
       });
     
   };
-  isFileOrDirectory('pruebas');
+fileOrDirectory('pruebas');
   
-  
-// Imprime en terminal los archivos que concuerden con la extención del formato markdown ".md".
+// find files markdown ".md".
 const goDirectory = (path) => {
     return new Promise((resolve, reject) => {
       fileHound.create()
@@ -36,12 +35,12 @@ const goDirectory = (path) => {
         .find()
         .then(res => (res.forEach(file => {
           if (file.length != 0) {
-            console.log("We have found .md files at: " + file);
-            // resolve(readMdFile(file));
+
+            console.log('We have found .md files at: ' + file);
           }
         })))
         .catch(err => {
-          reject(new Error("Path it is not valid"));
+          reject(console.log(`Error ${err}`));
         })
     })
   };
@@ -59,6 +58,7 @@ const readMdFile = (file) => {
       })  
     })
   }
+  readMdFile('README.md')
   
   // look for url
   const lookForUrl = (data) => {
@@ -79,7 +79,7 @@ const readMdFile = (file) => {
       if(meta != undefined){
         status = meta.status;
         if (status === 200) {
-          console.log(chalk.greenBright('This link it is OK ' + status + ' ' + links));
+          // console.log(chalk.greenBright('This link it is OK ' + status + ' ' + links));
         }else{
           //console.log(chalk.red('This link it is BROKEN ' + status + ' ' + links));
         }

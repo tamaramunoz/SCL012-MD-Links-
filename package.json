@@ -1,6 +1,6 @@
 {
   "name": "md-links",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "dependencies": {
     "chalk": "^3.0.0",
     "fetch": "^1.1.0",
@@ -8,5 +8,31 @@
     "isurl": "^4.0.1",
     "markdown-it": "^10.0.0",
     "node-fetch": "^2.6.0"
-  }
+  },
+  "description": "* [1. Preámbulo](#1-preámbulo)\r * [2. Resumen del proyecto](#2-resumen-del-proyecto)\r * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)\r * [4. Consideraciones generales](#4-consideraciones-generales)\r * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)\r * [6. Entregables](#6-entregables)\r * [7. Hacker edition](#7-hacker-edition)\r * [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)\r * [9. Checklist](#9-checklist)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamaramunoz/SCL012-MD-Links-.git"
+  },
+  "keywords": [
+    "npm",
+    "md-links",
+    "links"
+  ],
+  "author": "Tamara Munoz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamaramunoz/SCL012-MD-Links-/issues"
+  },
+  "homepage": "https://github.com/tamaramunoz/SCL012-MD-Links-#readme"
 }
