@@ -1,3 +1,3 @@
-const mdLinksJS = require('./md-links.js');
+const mdLinks = require('./md-links.js');
 
 
