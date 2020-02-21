@@ -1,1 +1,0 @@
-hola ratsi como estás!

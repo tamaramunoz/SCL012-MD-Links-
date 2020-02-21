@@ -51,7 +51,7 @@ exports.dirContent(userPath)
         readMdFile(file);
         console.log(chalk.magentaBright('Have found this .md file: ' + file));
       } else {
-        console.log(chalk.yellow('This is not a .md file, try another file ' + '\n'));
+        console.log(chalk.yellow('Have not found a .md file, try another directory ' + '\n'));
       }
     })
   })
