@@ -30,7 +30,7 @@ Ingresa el siguiente comando en la terminal
     npm start <nombre-del-directorio>
 ```
 La librería te enviará la siguiente información: 
-- Ruta del directorio
+- Ruta del directorio.
 - Nombre del archivo .md
 - Total de links encontrados en el archivo.
 - Lista de archivos con su url y status.
