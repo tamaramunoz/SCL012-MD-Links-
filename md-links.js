@@ -30,7 +30,7 @@ let userPath = process.argv[2];
 if (!path.isAbsolute(userPath)) {
   userPath = path.normalize(userPath);
   userPath = path.resolve(userPath);
-  console.log(chalk.magenta('This is the directory root: ' + userPath)); 
+  console.log(chalk.magenta('This is the directory root: ' + userPath));
 }
 
 // Reading directory

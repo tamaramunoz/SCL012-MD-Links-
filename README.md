@@ -6,7 +6,6 @@ MD-Links es una librería implementada en Javascript y ejecutada en Node.js, que
 ## Instalación ⚙
 
 Para instalar la librería debes correr el siguiente comando:
-
 ```
     npm install tamaramunoz/SCL012-MD-Links-
 ```
