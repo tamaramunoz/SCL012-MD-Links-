@@ -5,11 +5,9 @@ const fetchLink = fetch.fetchUrl;
 const isUrl = require('isUrl'); // take all urls
 const markDown = require('markdown-it')(); // transform the file in html
 const chalk = require('chalk'); // color text
-const userPath = path.resolve(process.argv[2]);
-
 
 // main function md-Links
-const mdLinks = (path, file, data, links) => {
+const mdLinks = (file, data, links) => {
   return new Promise((resolve, reject) => {
     resolve
       .then(res => {
@@ -28,6 +26,12 @@ const mdLinks = (path, file, data, links) => {
 };
 
 // _____________
+let userPath = process.argv[2];
+if (!path.isAbsolute(userPath)) {
+  userPath = path.normalize(userPath);
+  userPath = path.resolve(userPath);
+  console.log(chalk.magenta('This is the directory root: ' + userPath)); 
+}
 
 // Reading directory
 exports.dirContent = (userPath) => {
@@ -43,15 +47,15 @@ exports.dirContent(userPath)
   .then(data => {
     data.forEach(function (file) {
       let extFile = path.extname(file);
-      if (extFile === ".md") {
+      if (extFile === '.md') {
         readMdFile(file);
-        // console.log(chalk.blueBright(file + ' this is a .md file'));
+        console.log(chalk.magentaBright('Have found this .md file: ' + file));
       } else {
         console.log(chalk.yellow('This is not a .md file, try another file ' + '\n'));
       }
     })
   })
-  .catch(error => console.log(chalk.redBright('Invalid root. Please, enter a directory or file ' + error)));
+  .catch(error => console.log(chalk.redBright('Invalid root. Please, enter a right DIRECTORY ' + error)));
 
 // reading files
 const readMdFile = (file) => {
@@ -85,9 +89,9 @@ const urlValidate = (links) => {
     if (meta != undefined) {
       status = meta.status;
       if (status === 200) {
-        console.log(chalk.greenBright('This link it is OK ' + status + ' ' + links));
+        console.log(chalk.greenBright('Link OK, status: ' + status + ' ' + links));
       } else {
-        console.log(chalk.red('This link it is BROKEN ' + status + ' ' + links));
+        console.log(chalk.red('Link BROKEN, status: ' + status + ' ' + links));
       }
     }
   });
@@ -103,7 +107,7 @@ const urlStats = (data) => {
       totalLinks = totalLinks + 1;
     }
   });
-  console.log(chalk.bold.yellow('Total Links: ' + totalLinks));
+  console.log(chalk.yellow('Total Links: ' + totalLinks));
 };
 
 module.exports = {
